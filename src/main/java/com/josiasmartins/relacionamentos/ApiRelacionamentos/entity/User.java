@@ -1,7 +1,9 @@
 package com.josiasmartins.relacionamentos.ApiRelacionamentos.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,6 +14,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_user")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -23,6 +27,9 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
+    private String password;
 
     @CreationTimestamp
     private Instant creationTimestamp;
