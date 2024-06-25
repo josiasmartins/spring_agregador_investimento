@@ -1,5 +1,6 @@
 package com.josiasmartins.relacionamentos.ApiRelacionamentos.controller;
 
+import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.AccountResponseDTO;
 import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.CreateAccountDTO;
 import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.CreateUserDto;
 import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.UpdateUserDto;
@@ -68,6 +69,14 @@ public class UserController {
 
         return ResponseEntity.noContent().build();
 
+    }
+
+    @GetMapping("/{userId}/accounts")
+    public ResponseEntity<List<AccountResponseDTO>> listAccount(@PathVariable("userId") String userId) {
+
+        List<AccountResponseDTO> accounts = userService.listAccounts(userId);
+
+        return ResponseEntity.ok(accounts);
     }
 
 }

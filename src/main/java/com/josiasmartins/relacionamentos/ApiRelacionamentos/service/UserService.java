@@ -1,5 +1,6 @@
 package com.josiasmartins.relacionamentos.ApiRelacionamentos.service;
 
+import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.AccountResponseDTO;
 import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.CreateAccountDTO;
 import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.CreateUserDto;
 import com.josiasmartins.relacionamentos.ApiRelacionamentos.controller.DTO.UpdateUserDto;
@@ -119,6 +120,20 @@ public class UserService {
         );
 
         billingAddressRepository.save(billingAddress);
+
+    }
+
+    public List<AccountResponseDTO> listAccounts(String userId) {
+
+        User user = userRepository.findById(UUID.fromString(userId))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        return user.getAccounts()
+                .stream()
+                .map(ac ->
+                        new AccountResponseDTO(ac.getAccountId().toString(), ac.getDescription())
+                ).toList();
+
 
     }
 }
