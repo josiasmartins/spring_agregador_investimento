@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
@@ -12,6 +14,8 @@ import java.util.UUID;
 //@Table(name = "tb_account_stock_id")
 @Embeddable
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountStockId {
 
     @Column(name = "account_id")

@@ -1,11 +1,15 @@
 package com.josiasmartins.relacionamentos.ApiRelacionamentos.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_accounts_stocks")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountStock {
 
     @EmbeddedId
